@@ -1,18 +1,16 @@
 # 개발환경 소개 및 구현도구, 개인빌드 
 
-1. 개발환경 개요 
+- 개발환경 개요 
     * 개발환경 개요 
     * 개발환경 구성요소 
     * 적용 오픈 소스 
     * 서비스 별 소개 
-    * 개발자 개발환경 구성 
-    * 서버 개발환경 구성 
-2. 구현도구 
-3. 개인 빌드(Maven)
+- 개인 빌드(Maven)
 
 <br/>
+<hr>
 
-> 개발환경 개요 
+ ## 개발환경 개요 
 
 개발환경 크게 4가지로 분류 
 1) 개발환경 : 개발자가 정부 개발 프레임워크를 기반으로 어플리케이션을 개발하기 위한 개발환경  
@@ -130,4 +128,83 @@ preferences-maven-user setting 에 가면 "setting.xml"이라는 파일이 있�
 이 부분만 숙지한다면 그 외에는 프레임워크를 통해 자동으로 라이브러리를 관리할 수 있다. 
 
 
+<br/><br/>
+<hr>
 
+## Maven
+
+불필요한 설정을 최소회한다는 개졈 아래 Ant와 같은 빌드 기능을 제공할 뿐 아니라 구조화 된 빌드 기능을 통해 learning curve 및 재사용성을 향상시킨다. 
+
+**특징**
+
+* 장점
+    1) 뛰어난 의존성 관리
+    2) 모든 프로젝트에 걸쳐 쉽게 적용 가능한 일괄적인 사용법 
+    3) 라이브러리 및 메타 저장을 위한 지속적으로 확장되고 있는 저장소 
+    4) 쉽게 작성 가능한 플러그 인을 통한 확장성 
+    5) 동시에 다수의 프로젝트를 핸들링 할 수 있는 쉬운 설정 기반의 메커니즘 
+    6) 간단한 설정을 통한 배포 관리 
+    7) Java, C++ 등 다수의 프로그래밍 언어 지원 
+
+* 단점
+    1) repository 관리의 불편함 
+        - Maven 프로젝트의 급속한 발전으로 central repository 가 제공하는 라이브러리들이 급속히 증하하고 있으나, 아직 3rd 파티 라이브러리 등 미제공 라이브러리 등이 존재. 
+    
+    2) pom.xml 파일 관리 
+        - 메이븐 프로젝트 관리에 대한 모든 내용이 pom.xml 파일에 담기게 되므로 길고 장황하게 될 수 있다. 
+
+    3) 프로젝트에 특화된 복잡한 빌드 기능 제약 
+        - 메이븐 프로젝트 특성상 소프트웨어 빌드에 통용되는 라이프 사이클을 제공하고 있어 세부 항목 또는 특화된 빌드 환경에 대한 지원이 미약하다. 
+
+
+**Maven 아키텍처**
+
+![hahahaahahahah](https://user-images.githubusercontent.com/48245776/73634627-f491d400-46a4-11ea-8c48-ef893547e020.PNG)
+
+- 프로젝트 객체 모델(POM) : 메이븐 엔진 내장 + POM.XML  파일에서 선언적으로 제공 
+- 의존성 관리 모델 : 로컬 및 리모트 저장소를 이용하여 관리 
+- 빌드 생명주기와 각 단계 : 잘 정의된 단계들과 빌드 사이클에 따라 플러그인들을 조율
+
+
+**Maven 디렉토리 구조**
+
+![mavenderectory](https://user-images.githubusercontent.com/48245776/73634849-7aae1a80-46a5-11ea-9277-2bf2a6c28ff3.PNG)
+
+- ```/pom.xml``` : 프로젝트 객체 모델. 해당 프로젝트에 대한 전반적인 정보를 갖는다. 
+- ```/src/main/java``` : Java 소스 파일 위치 
+- ```/src/main/resoureces``` : 배포할 리소스, XML, properties...등 설정 파일들
+- ```/src/main/webapp``` : 웹 어플리케이션 관련 파일 위치(WEB-INF, css 등)
+- ```/src/test/java``` : 테스트 케이스 java 소스
+- ```/src/test/resoureces``` : 테스트 케이스 리소스 
+- ```/target``` : 빌드 된 output이 위치하는 디렉토리 
+
+
+**빌드 LifeCycle**
+
+![DFLKJDFALDKSF](https://user-images.githubusercontent.com/48245776/73635180-44bd6600-46a6-11ea-9b67-ae71c34591dd.PNG)
+
+
+**Maven repository**
+
+artifact들의 저장소로 로컬 및 리모트 repository로 구성되며 프로젝트는 pom.xml에서 선언한 dependency들을 저장소로부터 불러와서 사용한다. 
+
+![zzz](https://user-images.githubusercontent.com/48245776/73635402-ce6d3380-46a6-11ea-9268-9b59a7c5af2f.PNG)
+
+
+
+**프로젝트 객체 모델(POM)**
+
+프로젝트의 구조와 내용 설명. pom.xml파일에 프로젝트 관리 및 빌드에 필요한 환경 설정, 의존성 관리 등의 정보들을 기술한다. 
+
+![d](https://user-images.githubusercontent.com/48245776/73635574-273ccc00-46a7-11ea-85b5-90e24a6ea510.PNG)
+
+-> 프로젝트의 세부 메타 데이터 정보를 포함한다. 
+- ***버전 및 설정 관리, 빌드 환경, 라이브러리 저장소 및 의존성***
+
+![하하](https://user-images.githubusercontent.com/48245776/73635683-60753c00-46a7-11ea-8811-66e5c6a1f7d4.PNG)
+
+
+
+**Maven 기본 기능**
+
+프로젝트 우클릭 - Update Project - maven clean - maven install
