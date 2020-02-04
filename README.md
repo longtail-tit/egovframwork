@@ -6,7 +6,7 @@
 > <h2>목차</h2>
 * 표준프레임워크 개요 
 * [개발환경 소개 및 구현도구, 개인빌드](/document/fisrt.md) 
-* 테스트 도구, 형상관리, CI
+* [테스트 도구, 형상관리, CI](/document/테스트_형상관리_CI.md)
 * 실행환경 소개 및 공통기반 - IoC
 * 공통기반레이어 AOP, ID Generation, Logging
 * 데이터처리레이어 
