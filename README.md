@@ -10,7 +10,7 @@
 * [실행환경 소개 및 공통기반 - IoC](/document/강의04.md)
 * [AOP, ID Generation, Logging](/document/강의05.md)
 * [데이터처리레이어](/document/강의06.md)
-* 배치처리레이어
+* [배치처리레이어](/document/강의07.md)
 * [화면처리레이어](/document/강의08.md)
 * 모바일 표준프레임워크 실행환경 모바일웹
 * 모바일 표준프레임워크 실행환경 Device API
